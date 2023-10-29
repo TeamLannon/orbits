@@ -12,6 +12,7 @@ The steps below need to be executed to get things set up.
    ```
    git clone git@github.com:TeamLannon/orbits.git
    ```
+   Then cd into the `orbits`.
 1. Create the corresponding `mamba`/`conda` environment (requires that you've installed `mamba` or `conda`).  I'll give the `mamba` command, but to use `conda`, just replace `mamba` with `conda`.
    ```
    mamba env create -f environment.yml
