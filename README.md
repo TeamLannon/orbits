@@ -10,7 +10,7 @@ The steps below need to be executed to get things set up.
 1. Setup an ssh key with Github following instructions at Github (if you haven't done this before).
 1. Pull the code down from Github by cloning the repository:
    ```
-   git@github.com:TeamLannon/orbits.git
+   git clone git@github.com:TeamLannon/orbits.git
    ```
 1. Create the corresponding `mamba`/`conda` environment (requires that you've installed `mamba` or `conda`).  I'll give the `mamba` command, but to use `conda`, just replace `mamba` with `conda`.
    ```
