@@ -1,0 +1,10 @@
+name: orbits
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - matplotlib
+  - numpy
+  - jupyter
+  - astroquery
+prefix: /Users/klannon/mambaforge/envs/orbits
