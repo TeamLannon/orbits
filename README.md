@@ -16,3 +16,18 @@ The steps below need to be executed to get things set up.
    ```
    mamba env create -f environment.yml
    ```
+1. Activate your environment
+   ```
+   mamba activate orbits
+   ```
+1. Install the orbits package in your environment
+   ```
+   pip install -e .
+   ```
+
+## What to do when you're using the code after first setting it up
+1. In the terminal, navigate to the directory where you installed orbits (see above).
+2. Activate the mamba environment with `mamba activate orbits`
+
+## Useful references
+* [Astroquery](https://astroquery.readthedocs.io/en/latest/): A tool for getting data about planetary locations
