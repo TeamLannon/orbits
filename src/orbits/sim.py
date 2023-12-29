@@ -72,9 +72,7 @@ class SimRun:
             for obj in self.objects:
                 # Step 1: Calculate the acceleration caused by the gravitational
                 # force from each other object in the simulation
-                ax = 0*self.len_unit/(self.time_unit**2)
-                ay = 0*self.len_unit/(self.time_unit**2)
-                az = 0*self.len_unit/(self.time_unit**2)
+                a = np.zeros(3)*self.len_unit/(self.time_unit**2)
                 for src in self.objects:
                     if obj == src:
                         # Skip the same object
@@ -82,15 +80,13 @@ class SimRun:
 
                     # Do the acceleration calculation for this source
                     # and add it to the acceleration vector
-                    ax += 0 # Replace with actual calculation
-                    ay += 0 # Replace with actual calculation
-                    az += 0 # Replace with actual calculation
+                    a += 0
+                    
+                # Step 2: Update p with v
+                obj['pvt'][i]['p'] = obj['pvt'][i-1]['p'] + obj['pvt'][i-1]['v']*self.dt
 
-                # Step 2: Update x, y, and z with vx, vy, vz
-                obj['pvt'][i]['p'] += 0 # Replace with actual calculation
-
-                # Step 3: Update vx, vy, and vz with ax, ay, and az
-                obj['pvt'][i]['v'] += 0 # Replace with actual calculation
+                # Step 3: Update v with a
+                obj['pvt'][i]['v'] = obj['pvt'][i-1]['v'] + a * self.dt
 
                 # Step 4: Record the current time
                 obj['pvt'][i]['t'] = self.dt*i
