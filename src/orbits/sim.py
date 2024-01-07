@@ -33,7 +33,9 @@ class SimRun:
         self.len_unit = len_unit
         self.time_unit = time_unit
         self.mass_unit = mass_unit
-
+        self.G = const.G.to((self.len_unit**3)/
+                            ((self.mass_unit)*(self.time_unit**2)))
+        
     def add_object(self, name, x0, y0, z0, vx0, vy0, vz0, m, r):
         """Add one object to the simulation.  Call this for all
            objects before calling "run()"
@@ -78,9 +80,14 @@ class SimRun:
                         # Skip the same object
                         continue
 
+                    # print(f"obj={obj['name']}, src={src['name']}")
+                    r = obj['pvt'][i-1]['p'] - src['pvt'][i-1]['p']
+                    r_mag = np.sqrt(np.sum(r**2))
+                    # print(f"r={r}, |r|={r_mag}")
                     # Do the acceleration calculation for this source
                     # and add it to the acceleration vector
-                    a += 0
+                    a += -self.G*src["mass"]*r/(r_mag**3)
+                    # print(f"a={a}")
                     
                 # Step 2: Update p with v
                 obj['pvt'][i]['p'] = obj['pvt'][i-1]['p'] + obj['pvt'][i-1]['v']*self.dt
