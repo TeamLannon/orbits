@@ -89,8 +89,8 @@ class SimRun:
                     a += -self.G*src["mass"]*r/(r_mag**3)
                     # print(f"a={a}")
                     
-                # Step 2: Update p with v
-                obj['pvt'][i]['p'] = obj['pvt'][i-1]['p'] + obj['pvt'][i-1]['v']*self.dt
+                # Step 2: Update p with v and a
+                obj['pvt'][i]['p'] = obj['pvt'][i-1]['p'] + obj['pvt'][i-1]['v']*self.dt + (a/2) * self.dt**2
 
                 # Step 3: Update v with a
                 obj['pvt'][i]['v'] = obj['pvt'][i-1]['v'] + a * self.dt
